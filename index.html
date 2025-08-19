@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RC Rádio - O Som Que Te Move</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --red: #e10600;
+  --white: #ffffff;
+  --black: #111111;
+  --gray: #cccccc;
+  --blue: #1a73e8;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Orbitron', sans-serif;
+  background: linear-gradient(270deg, var(--blue), var(--red), var(--black));
+  background-size: 600% 600%;
+  animation: gradientShift 20s ease infinite;
+  color: var(--white);
+  overflow-x: hidden;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Header */
+header {
+  text-align: center;
+  padding: 40px 20px;
+  background: rgba(0,0,0,0.6);
+  border-bottom: 3px solid var(--red);
+  position: relative;
+  overflow: hidden;
+}
+
+header img {
+  height: 90px;
+  margin-bottom: 10px;
+}
+
+header h1 {
+  font-size: 2.8rem;
+  color: var(--white);
+  text-shadow: 0 0 15px var(--red), 0 0 10px var(--blue);
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  animation: marquee 10s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+header h2 {
+  font-size: 1.2rem;
+  color: var(--gray);
+  margin-top: 10px;
+}
+
+header p {
+  font-size: 1rem;
+  color: var(--white);
+  margin-top: 5px;
+}
+
+/* Notícias */
+main {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+h2.section-title {
+  color: var(--white);
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--red);
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+#news {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.news-item {
+  background: rgba(0,0,0,0.6);
+  padding: 20px;
+  border-radius: 15px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.news-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px var(--red), 0 0 15px var(--blue);
+}
+
+.news-item h3 {
+  color: var(--red);
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.news-item a {
+  color: var(--blue);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.news-item a:hover {
+  text-decoration: underline;
+}
+
+/* Player moderno */
+#player {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: rgba(0,0,0,0.85);
+  padding: 20px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0 0 25px var(--red), 0 0 25px var(--blue);
+  z-index: 1000;
+  width: 260px;
+}
+
+.player-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.player-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--red);
+  border: none;
+  cursor: pointer;
+  color: var(--white);
+  font-size: 28px;
+  transition: 0.3s;
+}
+
+.player-btn:hover {
+  background: var(--blue);
+}
+
+.progress {
+  width: 100%;
+  height: 6px;
+  background: var(--gray);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--red), var(--blue));
+}
+
+/* VU Meter */
+.vu-bars {
+  display: flex;
+  gap: 4px;
+  margin-top: 10px;
+}
+
+.vu-bar {
+  width: 6px;
+  height: 20px;
+  background: var(--red);
+  border-radius: 3px;
+  animation: vu 1s infinite;
+}
+
+.vu-bar:nth-child(2) { animation-delay: 0.2s; }
+.vu-bar:nth-child(3) { animation-delay: 0.4s; }
+.vu-bar:nth-child(4) { animation-delay: 0.6s; }
+.vu-bar:nth-child(5) { animation-delay: 0.8s; }
+
+@keyframes vu {
+  0%, 100% { height: 10px; }
+  50% { height: 50px; }
+}
+
+/* Botão WhatsApp */
+.whatsapp-button {
+  display: inline-block;
+  padding: 12px 25px;
+  background: var(--red);
+  color: var(--white);
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.whatsapp-button:hover {
+  background: var(--blue);
+}
+
+/* Rodapé */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: rgba(0,0,0,0.7);
+  color: var(--white);
+}
+
+footer img {
+  height: 40px;
+  margin: 0 10px;
+  vertical-align: middle;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <img src="logo.png" alt="Logo RC Rádio">
+  <h1>O Som Que Te Move</h1>
+  <h2>O melhor da música nacional e internacional</h2>
+  <p>De Rio Espera - MG para o mundo</p>
+</header>
+
+<main>
+  <section>
+    <h2 class="section-title">Últimas Notícias</h2>
+    <div id="news">Carregando notícias...</div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Peça Sua Música</h2>
+    <a class="whatsapp-button" href="https://wa.me/5531983532534" target="_blank">Enviar mensagem no WhatsApp</a>
+  </section>
+</main>
+
+<div id="player">
+  <div class="player-controls">
+    <button id="playPause" class="player-btn">▶</button>
+  </div>
+  <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+  <div class="vu-bars">
+    <div class="vu-bar"></div>
+    <div class="vu-bar"></div>
+    <div class="vu-bar"></div>
+    <div class="vu-bar"></div>
+    <div class="vu-bar"></div>
+  </div>
+  <audio id="audio" src="https://stream.zeno.fm/asa9nfcu0a6tv"></audio>
+</div>
+
+<footer>
+  <p>&copy; 2025 RC Rádio - De Rio Espera - MG para o mundo</p>
+  <img src="radioscom.png" alt="Radios.com">
+  <img src="radiosnet.png" alt="Radios.net">
+</footer>
+
+<script>
+const newsContainer = document.getElementById('news');
+async function loadNews() {
+  try {
+    const urls = [
+      'https://api.allorigins.win/raw?url=https://g1.globo.com/dynamo/rss2.xml',
+      'https://api.allorigins.win/raw?url=https://rss.uol.com.br/feed/noticias.xml',
+      'https://api.allorigins.win/raw?url=https://feeds.r7.com/ultimas-noticias'
+    ];
+    let all = [];
+    for (const url of urls) {
+      const res = await fetch(url);
+      const text = await res.text();
+      const parser = new DOMParser();
+      const xml = parser.parseFromString(text, "text/xml");
+      const items = xml.querySelectorAll("item");
+      items.forEach((item, i) => {
+        if (i < 3) {
+          all.push({
+            title: item.querySelector("title")?.textContent,
+            link: item.querySelector("link")?.textContent
+          });
+        }
+      });
+    }
+    newsContainer.innerHTML = "";
+    all.slice(0, 9).forEach(item => {
+      const div = document.createElement("div");
+      div.classList.add("news-item");
+      div.innerHTML = `
+        <h3>${item.title}</h3>
+        <a href="${item.link}" target="_blank">Leia mais</a>
+      `;
+      newsContainer.appendChild(div);
+    });
+  } catch(err) {
+    newsContainer.innerHTML = '<p>Não foi possível carregar as notícias.</p>';
+    console.error(err);
+  }
+}
+loadNews();
+
+// Player moderno
+const audio = document.getElementById('audio');
+const playPauseBtn = document.getElementById('playPause');
+const progressBar = document.getElementById('progressBar');
+
+playPauseBtn.addEventListener('click', () => {
+  if (audio.paused) {
+    audio.play();
+    playPauseBtn.textContent = '⏸';
+  } else {
+    audio.pause();
+    playPauseBtn.textContent = '▶';
+  }
+});
+
+audio.addEventListener('timeupdate', () => {
+  const percent = (audio.currentTime / audio.duration) * 100;
+  progressBar.style.width = percent + '%';
+});
+</script>
+
+</body>
+</html>
